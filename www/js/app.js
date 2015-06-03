@@ -38,46 +38,57 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.entradas', {
+    url: '/entradas',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+      'tab-entradas': {
+        templateUrl: 'templates/tab-entradas.html',
+        controller: 'EntradaCtrl'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
-
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.principales', {
+    url: '/principales',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-principales': {
+        templateUrl: 'templates/tab-principales.html',
+        controller: 'PrincipalCtrl'
       }
     }
-  });
+  })
+
+  .state('tab.postres', {
+    url: '/postres',
+    views: {
+      'tab-postres': {
+        templateUrl: 'templates/tab-postres.html',
+        controller: 'PostreCtrl'
+      }
+    }
+  })
+
+  .state('tab.bebidas', {
+    url: '/bebidas',
+    views: {
+      'tab-bebidas': {
+        templateUrl: 'templates/tab-bebidas.html',
+        controller: 'BebidaCtrl'
+      }
+    }
+  })
+
+  .state('tab.factura', {
+    url: '/factura',
+    views: {
+      'tab-factura': {
+        templateUrl: 'templates/tab-factura.html',
+        controller: 'FacturaCtrl'
+      }
+    }
+  })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/entradas');
 
 });
