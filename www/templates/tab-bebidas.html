@@ -7,46 +7,12 @@
           <input type="text" placeholder="Search">
         </label>
       </div>
-      <a class="item item-thumbnail-left" href="#">
-        <img src="img/ionic.png">
-        <h2>Bebida-001</h2>
-        <p>Lps.100</p>
-      </a>
-      <a class="item item-thumbnail-left" href="#">
-        <img src="img/ionic.png">
-        <h2>Bebida-002</h2>
-        <p>Lps.100</p>
-      </a>
-      <a class="item item-thumbnail-left" href="#">
-        <img src="img/ionic.png">
-        <h2>Bebida-003</h2>
-        <p>Lps.100</p>
-      </a>
-      <a class="item item-thumbnail-left" href="#">
-        <img src="img/ionic.png">
-        <h2>Bebida-004</h2>
-        <p>Lps.100</p>
-      </a>
-      <a class="item item-thumbnail-left" href="#">
-        <img src="img/ionic.png">
-        <h2>Bebida-005</h2>
-        <p>Lps.100</p>
-      </a>
-      <a class="item item-thumbnail-left" href="#">
-        <img src="img/ionic.png">
-        <h2>Bebida-006</h2>
-        <p>Lps.100</p>
-      </a>
-      <a class="item item-thumbnail-left" href="#">
-        <img src="img/ionic.png">
-        <h2>Bebida-007</h2>
-        <p>Lps.100</p>
-      </a>
-      <a class="item item-thumbnail-left" href="#">
-        <img src="img/ionic.png">
-        <h2>Bebida-008</h2>
-        <p>Lps.100</p>
-      </a>
+      <a class="item item-thumbnail-left" href="#" ng-repeat="data in datas" ng-switch on="data.Image">
+          <img src="img/ionic.png" ng-switch-when="null">
+          <img ng-src="{{ data.Image}}" ng-switch-default>
+          <h2>{{data.Name}}</h2>
+          <p>Lps. {{data.Price}}</p>
+        </a>
 
   </ion-content>
 </ion-view>
