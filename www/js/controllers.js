@@ -12,7 +12,7 @@ angular.module('starter.controllers', [])
   })
 })
 
-.controller('PrincipalCtrl', function($scope) {
+.controller('PrincipalCtrl', function($scope,$http) {
   $http.get("https://apimesero.herokuapp.com/producto/plato").success(function(data, status, headers, config) {
    		$scope.datas= data;
     	console.log(data);
@@ -24,7 +24,7 @@ angular.module('starter.controllers', [])
   })
 })
 
-.controller('PostreCtrl', function($scope) {
+.controller('PostreCtrl', function($scope,$http) {
   $http.get("https://apimesero.herokuapp.com/producto/postre").success(function(data, status, headers, config) {
    		$scope.datas= data;
     	console.log(data);
@@ -36,7 +36,7 @@ angular.module('starter.controllers', [])
   })
 })
 
-.controller('BebidaCtrl', function($scope) {
+.controller('BebidaCtrl', function($scope,$http) {
   $http.get("https://apimesero.herokuapp.com/producto/bebida").success(function(data, status, headers, config) {
    		$scope.datas= data;
     	console.log(data);
@@ -47,6 +47,7 @@ angular.module('starter.controllers', [])
     	// err.status will contain the status code
   })
 })
+
 
 .controller('FacturaCtrl', function($scope) {
 });
