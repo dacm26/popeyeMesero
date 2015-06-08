@@ -7,7 +7,7 @@
           <input type="text" placeholder="Search">
         </label>
       </div>
-      <a class="item item-thumbnail-left" href="#" ng-repeat="data in datas" ng-switch on="data.Image">
+      <a class="item item-thumbnail-left" href="#/tab/bebidas/{{data.id}}" ng-repeat="data in datas" ng-switch on="data.Image">
           <img src="img/ionic.png" ng-switch-when="null">
           <img ng-src="{{ data.Image}}" ng-switch-default>
           <h2>{{data.Name}}</h2>

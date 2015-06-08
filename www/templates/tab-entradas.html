@@ -1,5 +1,5 @@
 <ion-view view-title="Entradas">
-  <ion-content class="padding" ng-app="Jarvis" ng-controller="EntradaCtrl">  
+  <ion-content class="padding" ng-app="Jarvis">  
     <div class="list">
       <div class="list list-inset">
         <label class="item item-input">
@@ -7,7 +7,7 @@
           <input type="text" placeholder="Search">
         </label>
       </div>
-        <a class="item item-thumbnail-left" href="#" ng-repeat="data in datas" ng-switch on="data.Image">
+        <a class="item item-thumbnail-left" href="#/tab/entradas/{{data.id}}" ng-repeat="data in datas" ng-switch on="data.Image">
           <img src="img/ionic.png" ng-switch-when="null">
           <img ng-src="{{ data.Image}}" ng-switch-default>
           <h2>{{data.Name}}</h2>

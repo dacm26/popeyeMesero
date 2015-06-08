@@ -1,51 +1,58 @@
 angular.module('starter.controllers', [])
 
-.controller('EntradaCtrl', function($scope,$http) {
-   $http.get("https://apimesero.herokuapp.com/producto/entrada").success(function(data, status, headers, config) {
-   		$scope.datas= data;
-    	console.log(data);
-    // For JSON responses, resp.data contains the result
-   }).error(function(data, status, headers, config) {
-    	console.error('ERR\n', data);
-    	$scope.data= undefined;
-    	// err.status will contain the status code
-  })
+.controller('EntradaCtrl', function(ProductsEndpoints,$scope) {
+  $scope.datas = [];
+
+  var handleSuccess = function(data, status) {
+        $scope.datas = data;
+        console.log($scope.datas);
+  };
+
+    ProductsEndpoints.getEntradas().success(handleSuccess);
 })
 
-.controller('PrincipalCtrl', function($scope,$http) {
-  $http.get("https://apimesero.herokuapp.com/producto/plato").success(function(data, status, headers, config) {
-   		$scope.datas= data;
-    	console.log(data);
-    // For JSON responses, resp.data contains the result
-   }).error(function(data, status, headers, config) {
-    	console.error('ERR\n', data);
-    	$scope.data= undefined;
-    	// err.status will contain the status code
-  })
+.controller('DetailCtrl',function($scope,$stateParams,ProductsEndpoints){
+  $scope.entrada = [];
+
+  var handleSuccess = function(data, status) {
+        $scope.entrada = data;
+        console.log($scope.entrada);
+  };
+
+    ProductsEndpoints.getProduct($stateParams.productId).success(handleSuccess);
 })
 
-.controller('PostreCtrl', function($scope,$http) {
-  $http.get("https://apimesero.herokuapp.com/producto/postre").success(function(data, status, headers, config) {
-   		$scope.datas= data;
-    	console.log(data);
-    // For JSON responses, resp.data contains the result
-   }).error(function(data, status, headers, config) {
-    	console.error('ERR\n', data);
-    	$scope.data= undefined;
-    	// err.status will contain the status code
-  })
+.controller('PrincipalCtrl', function($scope, ProductsEndpoints) {
+  $scope.datas = [];
+
+  var handleSuccess = function(data, status) {
+        $scope.datas = data;
+        console.log($scope.datas);
+  };
+
+    ProductsEndpoints.getPlatos().success(handleSuccess);
 })
 
-.controller('BebidaCtrl', function($scope,$http) {
-  $http.get("https://apimesero.herokuapp.com/producto/bebida").success(function(data, status, headers, config) {
-   		$scope.datas= data;
-    	console.log(data);
-    // For JSON responses, resp.data contains the result
-   }).error(function(data, status, headers, config) {
-    	console.error('ERR\n', data);
-    	$scope.data= undefined;
-    	// err.status will contain the status code
-  })
+.controller('PostreCtrl', function($scope, ProductsEndpoints) {
+  $scope.datas = [];
+
+  var handleSuccess = function(data, status) {
+        $scope.datas = data;
+        console.log($scope.datas);
+  };
+
+    ProductsEndpoints.getPostres().success(handleSuccess);
+})
+
+.controller('BebidaCtrl', function($scope, ProductsEndpoints) {
+  $scope.datas = [];
+
+  var handleSuccess = function(data, status) {
+        $scope.datas = data;
+        console.log($scope.datas);
+  };
+
+    ProductsEndpoints.getBebidas().success(handleSuccess);
 })
 
 

@@ -47,6 +47,46 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+
+ .state('tab.entradas-detail', {
+    url: '/entradas/:productId',
+    views: {
+      'tab-entradas': {
+        templateUrl: 'templates/tab-product-detail.html',
+        controller: 'DetailCtrl'
+      }
+    }
+  })
+
+  .state('tab.principales-detail', {
+    url: '/principales/:productId',
+    views: {
+      'tab-principales': {
+        templateUrl: 'templates/tab-product-detail.html',
+        controller: 'DetailCtrl'
+      }
+    }
+  }) 
+
+  .state('tab.postres-detail', {
+    url: '/postres/:productId',
+    views: {
+      'tab-postres': {
+        templateUrl: 'templates/tab-product-detail.html',
+        controller: 'DetailCtrl'
+      }
+    }
+  }) 
+
+  .state('tab.bebidas-detail', {
+    url: '/bebidas/:productId',
+    views: {
+      'tab-bebidas': {
+        templateUrl: 'templates/tab-product-detail.html',
+        controller: 'DetailCtrl'
+      }
+    }
+  })  
   
 
   .state('tab.principales', {
