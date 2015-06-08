@@ -2,25 +2,29 @@
   <ion-content>
     <div class="list card">
 
-      <a href="#" class="item item-icon-left">
-        <i class="icon ion-home"></i>
-        Enter home address
-      </a>
+      <div class="item item-avatar" ng-switch on="product.Image">
+        <img src="img/ionic.png" ng-switch-when="null">
+        <img ng-src="{{ product.Image}}" ng-switch-default>
+        <h2>{{ product.Name }}</h2>
+        <p>Lps. {{product.Price}}</p>
+      </div>
 
-      <a href="#" class="item item-icon-left">
-        <i class="icon ion-ios-telephone"></i>
-        Enter phone number
-      </a>
+      <div class="item item-body" ng-switch on="product.Image">
+        <img style="width: 100%; height: auto;" src="img/ionic.png" ng-switch-when="null">
+        <img style="width: 100%; height: auto;" ng-src="{{ product.Image}}" ng-switch-default>
+        <br/>
+        <p>
 
-      <a href="#" class="item item-icon-left">
-        <i class="icon ion-wifi"></i>
-        Enter wireless password
-      </a>
+          {{ product.Description }}
+        </p>
+      </div>
 
-      <a href="#" class="item item-icon-left">
-        <i class="icon ion-card"></i>
-        Enter card information
-      </a>
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" href="#">
+          <i class="icon ion-thumbsup"></i>
+          Buy
+        </a>
+      </div>
 
     </div>
   </ion-content>

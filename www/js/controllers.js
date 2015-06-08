@@ -12,11 +12,11 @@ angular.module('starter.controllers', [])
 })
 
 .controller('DetailCtrl',function($scope,$stateParams,ProductsEndpoints){
-  $scope.entrada = [];
+  $scope.product = [];
 
   var handleSuccess = function(data, status) {
-        $scope.entrada = data;
-        console.log($scope.entrada);
+        $scope.product = data;
+        console.log($scope.product);
   };
 
     ProductsEndpoints.getProduct($stateParams.productId).success(handleSuccess);
