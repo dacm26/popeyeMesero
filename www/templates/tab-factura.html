@@ -1,11 +1,12 @@
-<ion-view view-title="Factura">
+<ion-view view-title="Factura" cache-view="false">
   <ion-content class="padding">  
     <div class="list">
-      <a class="item item-thumbnail-left" href="#">
-        <img src="img/ionic.png">
-        <h2>Factura-001</h2>
-        <p>Lps.1000</p>
-      </a>
+    	<a class="item item-thumbnail-left" href="#/tab/factura/{{data.id}}" ng-repeat="data in datas">
+	      <img src="img/ionic.png">
+	      <h2>Factura de {{data.Name}}</h2>
+	      <p>Lps. {{data.Total}}</p>
+    	</a>
+
 
   </ion-content>
 </ion-view>

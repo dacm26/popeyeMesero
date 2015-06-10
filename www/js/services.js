@@ -21,12 +21,46 @@ angular.module('starter.services', [])
                 ID    : 'TP001'
             });
         },
-        buyProduct: function(data){
-            return $http.post('https://apimesero.herokuapp.com/create/order',{
-                clientes: data.clientes,
-                Product_id: data.Product_id,
-                bill_id: data.bill_id 
+        getBills: function(billId){
+            return $http.get('https://apimesero.herokuapp.com/bills/'+billId, { 
+                type : 'getSource',
+                ID    : 'TP001'
             });
+        },
+        getClientBill: function(data){
+            var req = {
+                method: 'POST',
+                url: 'https://apimesero.herokuapp.com/cliente/bill',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept':'application/json'
+                },
+                data:{
+                   bill_id: data.bill_id,
+                   client_id: data.client_id
+                }   
+                
+            };
+        
+            return $http(req);
+        },
+        buyProduct: function(data){
+            var req = {
+                method: 'POST',
+                url: 'https://apimesero.herokuapp.com/create/order',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept':'application/json'
+                },
+                data:{
+                   clientes: data.clientes,
+                   Product_id: data.Product_id,
+                   bill_id: data.bill_id
+                }   
+                
+            };
+        
+            return $http(req);
         },
         getEntradas: function() {
             return $http.get('https://apimesero.herokuapp.com/producto/entrada', { 

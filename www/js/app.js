@@ -129,6 +129,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+  .state('tab.factura-detail', {
+    url: '/factura/:clientId',
+    views: {
+      'tab-factura': {
+        templateUrl: 'templates/tab-factura-detail.html',
+        controller: 'FacturaDetailCtrl'
+      }
+    }
+  })
+
 
 
   // if none of the above states are matched, use this as the fallback

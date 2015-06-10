@@ -1,0 +1,43 @@
+<ion-view view-title="Detalles">
+  <ion-content>
+    <div class="list">
+    <div class="item item-divider">
+      Productos Comprados
+    </div>
+
+    <a class="item" href="#" ng-repeat="orden in bill.Ordenes">
+      <div class="row">
+        <div class="col col-50"><strong>{{orden.Nombre}}</strong></div>
+        <div class="col"></div>
+        <div class="col">Lps. {{orden.Precio}}</div>
+      </div>
+    </a>
+    <div class="item item-divider">
+      Facturación    
+    </div>
+    <a class="item" href="#" >
+      <div class="row">
+        <div class="col col-50"><strong>Subtotal</strong></div>
+        <div class="col"></div>
+        <div class="col">Lps. {{bill.Subtotal}}</div>
+      </div>
+    </a>
+    <a class="item" href="#" >
+      <div class="row">
+        <div class="col col-50"><strong>ISV</strong></div>
+        <div class="col"></div>
+        <div class="col">Lps. {{bill.ISV}}</div>
+      </div>
+    </a>
+    <a class="item" href="#" >
+      <div class="row">
+        <div class="col col-50"><strong>Total</strong></div>
+        <div class="col"></div>
+        <div class="col">Lps. {{bill.Total}}</div>
+      </div>
+    </a>  
+  
+
+    </div>
+  </ion-content>
+</ion-view>
