@@ -13,13 +13,59 @@ angular.module('starter.services', [])
     };
 })
 
+.service('TableId', function () {
+    var tableId =0;
+
+    return {
+        getTable: function () {
+            return tableId;
+        },
+        setTable: function(value) {
+            tableId = value;
+        }
+    };
+})
+
 .factory('ProductsEndpoints', function($http){
     return {
-        createBill: function(){
-            return $http.get('https://apimesero.herokuapp.com/giff/bill', { 
+        payTable: function(table,bill){
+            var req = {
+                method: 'POST',
+                url: 'https://apimesero.herokuapp.com/pay/bill',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept':'application/json'
+                },
+                data:{
+                   table_id: table,
+                   bill_id: bill
+                }   
+                
+            };
+        
+            return $http(req);
+        },
+        getTables: function(){
+            return $http.get('https://apimesero.herokuapp.com/table/lyn', { 
                 type : 'getSource',
                 ID    : 'TP001'
             });
+        },
+        createBill: function(table){
+            var req = {
+                method: 'POST',
+                url: 'https://apimesero.herokuapp.com/giff/bill',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept':'application/json'
+                },
+                data:{
+                   table_id: table
+                }   
+                
+            };
+        
+            return $http(req);
         },
         getBills: function(billId){
             return $http.get('https://apimesero.herokuapp.com/bills/'+billId, { 

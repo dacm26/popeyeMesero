@@ -1,0 +1,11 @@
+<ion-view view-title="Mesas disponibles">
+  <ion-content class="padding">  
+    <div class="list">
+      <a class="item item-thumbnail-left" href="#/table/{{data.id}}" ng-repeat="data in datas" ng-if="data.used === false">
+        <img src="img/ionic.png">
+        <h2>Mesa #{{data.id}}</h2>
+      </a>
+    </div>
+
+  </ion-content>
+</ion-view>

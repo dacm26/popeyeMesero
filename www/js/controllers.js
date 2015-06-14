@@ -1,11 +1,11 @@
 angular.module('starter.controllers', [])
 
-.controller('EntradaCtrl', function(ProductsEndpoints,$scope,BillId) {
+.controller('EntradaCtrl', function(ProductsEndpoints,$scope,BillId,TableId) {
   if (BillId.getBill() === 0) {
     var billSuccess = function(data, status) {
         BillId.setBill(data.id);
     };
-    ProductsEndpoints.createBill().success(billSuccess);
+    ProductsEndpoints.createBill(TableId.getTable()).success(billSuccess);
   }
   $scope.datas = [];
 
@@ -13,13 +13,15 @@ angular.module('starter.controllers', [])
         $scope.datas = data;
         console.log($scope.datas);
   };
-
+  console.log("BillId:\n",BillId.getBill());
+  console.log("TableId:\n",TableId.getTable());
   ProductsEndpoints.getEntradas().success(handleSuccess);
 })
 
-.controller('DetailCtrl',function($scope,$stateParams,ProductsEndpoints,BillId,$ionicPopup, $timeout){
+.controller('DetailCtrl',function($scope,$stateParams,ProductsEndpoints,BillId,TableId,$ionicPopup, $timeout){
   $scope.product = [];
-
+  console.log("BillId:\n",BillId.getBill());
+  console.log("TableId:\n",TableId.getTable());
   var handleSuccess = function(data, status) {
         $scope.product = data;
         console.log($scope.product);
@@ -75,9 +77,10 @@ angular.module('starter.controllers', [])
  };
 })
 
-.controller('PrincipalCtrl', function($scope, ProductsEndpoints,BillId) {
+.controller('PrincipalCtrl', function($scope, ProductsEndpoints,BillId,TableId) {
   $scope.datas = [];
-
+  console.log("BillId:\n",BillId.getBill());
+  console.log("TableId:\n",TableId.getTable());
   var handleSuccess = function(data, status) {
         $scope.datas = data;
         console.log($scope.datas);
@@ -85,9 +88,10 @@ angular.module('starter.controllers', [])
   ProductsEndpoints.getPlatos().success(handleSuccess);
 })
 
-.controller('PostreCtrl', function($scope, ProductsEndpoints,BillId) {
+.controller('PostreCtrl', function($scope, ProductsEndpoints,BillId,TableId) {
   $scope.datas = [];
-
+  console.log("BillId:\n",BillId.getBill());
+  console.log("TableId:\n",TableId.getTable());
   var handleSuccess = function(data, status) {
         $scope.datas = data;
         console.log($scope.datas);
@@ -95,9 +99,10 @@ angular.module('starter.controllers', [])
   ProductsEndpoints.getPostres().success(handleSuccess);
 })
 
-.controller('BebidaCtrl', function($scope, ProductsEndpoints,BillId) {
+.controller('BebidaCtrl', function($scope, ProductsEndpoints,BillId,TableId) {
   $scope.datas = [];
-
+  console.log("BillId:\n",BillId.getBill());
+  console.log("TableId:\n",TableId.getTable());
   var handleSuccess = function(data, status) {
         $scope.datas = data;
         console.log($scope.datas);
@@ -106,8 +111,10 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('FacturaCtrl', function($scope,BillId,ProductsEndpoints) {
+.controller('FacturaCtrl', function($scope,BillId,ProductsEndpoints,TableId) {
   $scope.datas = [];
+  console.log("BillId:\n",BillId.getBill());
+  console.log("TableId:\n",TableId.getTable());
   var handleSuccess = function(data, status) {
         $scope.datas = data;
         console.log($scope.datas);
@@ -120,7 +127,9 @@ angular.module('starter.controllers', [])
   ProductsEndpoints.getBills(BillId.getBill()).success(handleSuccess).error(handleError);
 })
 
-.controller('FacturaDetailCtrl', function($scope,$stateParams,BillId,ProductsEndpoints) {
+.controller('FacturaDetailCtrl', function($scope,$stateParams,BillId,ProductsEndpoints,TableId) {
+  console.log("BillId:\n",BillId.getBill());
+  console.log("TableId:\n",TableId.getTable());
   $scope.bill = [];
   var handleSuccess = function(data, status) {
         $scope.bill = data;
@@ -131,6 +140,35 @@ angular.module('starter.controllers', [])
     client_id: $stateParams.clientId
   };
   ProductsEndpoints.getClientBill(params).success(handleSuccess);
+})
+
+.controller('TableCtrl', function($scope,$stateParams,ProductsEndpoints,TableId,BillId) {
+  console.log("BillId:\n",BillId.getBill());
+  console.log("TableId:\n",TableId.getTable());
+    $scope.datas=[];
+    var handleSuccess = function(data, status) {
+        $scope.datas = data;
+    };
+    ProductsEndpoints.getTables().success(handleSuccess);
+})
+
+.controller('SetTableCtrl', function($scope,$stateParams,$state,TableId,BillId) {
+  console.log("BillId:\n",BillId.getBill());
+  console.log("TableId:\n",TableId.getTable());
+  var id = parseInt($stateParams.tableId);
+  TableId.setTable(id);
+  $state.go('tab.entradas');  
+})
+
+.controller('PayTableCtrl', function($scope,$stateParams,$state,TableId,BillId,ProductsEndpoints) {
+  console.log("asbvdsabvdsabbdasdbasdbsajdbajsabdsadda\n");
+  var handleSuccess = function(data, status) {
+        console.log("Pagando Factura:\n");
+        console.log("BillId:\n",BillId.getBill());
+        console.log("TableId:\n",TableId.getTable());
+        $state.go('table');
+  };
+    ProductsEndpoints.payTable(TableId.getTable(),BillId.getBill()).success(handleSuccess);
 })
 
 ;

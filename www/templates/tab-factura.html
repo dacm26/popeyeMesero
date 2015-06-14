@@ -1,4 +1,4 @@
-<ion-view view-title="Factura" cache-view="false">
+<ion-view view-title="Factura">
   <ion-content class="padding">  
     <div class="list">
     	<a class="item item-thumbnail-left" href="#/tab/factura/{{data.id}}" ng-repeat="data in datas">
@@ -6,7 +6,13 @@
 	      <h2>Factura de {{data.Name}}</h2>
 	      <p>Lps. {{data.Total}}</p>
     	</a>
-
+    </div>
 
   </ion-content>
 </ion-view>
+
+<ion-footer-bar>
+  <div class="button-bar">
+    <a href="#/pay" class="button button-clear button-dark"><i class="icon ion-ios-cart"></i><strong> Pagar</strong></a>
+  </div>
+</ion-footer-bar>

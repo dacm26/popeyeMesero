@@ -1,12 +1,6 @@
 <ion-view view-title="Platos Principales">
   <ion-content class="padding" ng-app="Jarvis" ng-controller="PrincipalCtrl">  
     <div class="list">
-      <div class="list list-inset">
-        <label class="item item-input">
-          <i class="icon ion-search placeholder-icon"></i>
-          <input type="text" placeholder="Search">
-        </label>
-      </div>
         <a class="item item-thumbnail-left" href="#/tab/principales/{{data.id}}" ng-repeat="data in datas" ng-switch on="data.Image">
           <img src="img/ionic.png" ng-switch-when="null">
           <img ng-src="{{ data.Image}}" ng-switch-default>
