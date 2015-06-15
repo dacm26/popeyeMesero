@@ -166,6 +166,7 @@ angular.module('starter.controllers', [])
         console.log("Pagando Factura:\n");
         console.log("BillId:\n",BillId.getBill());
         console.log("TableId:\n",TableId.getTable());
+        BillId.setBill(0);
         $state.go('table');
   };
     ProductsEndpoints.payTable(TableId.getTable(),BillId.getBill()).success(handleSuccess);
